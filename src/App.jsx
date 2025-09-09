@@ -1,10 +1,12 @@
-import { useState } from 'react'
+
 
 function App() {
 
+  const userAge = 18;
+
   return (
     <>
-      
+        {userAge}
     </>
   )
 }
