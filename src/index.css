@@ -1,17 +1,1 @@
-@import url('tailwindcss');
-
-body {
-  background-color: aqua;
-  opacity: 0.9;
-}
-
-bdoy {
-  opacity: 0.9;
-}
-
-body {
-  display: inline;
-}
-
-h1 {
-}
+@import "tailwindcss";

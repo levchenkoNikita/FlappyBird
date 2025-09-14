@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import Game from './Game';
 
 function App() {
-  console.log('Hello world!');
-
-  return <></>;
+  return (
+    <>
+      <Game></Game>
+    </>
+  );
 }
 
 export default App;
