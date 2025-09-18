@@ -1,39 +1,40 @@
-import { useMemo } from "react";
+import React, { useMemo } from "react";
+import LineWrapper from "../Lines/LineWrapper";
 
-const Ground = () => {
-    const screenWidth = document.documentElement.clientWidth;
-    const quantityLines = 21;
-    const lineWidth = screenWidth / quantityLines;
-
+const Ground = React.memo(() => {
+    
+    const screenWidth = useMemo(() => {
+        return window.innerWidth;
+    }, []);
+    const quantityLines = useMemo(() => {
+        return 14;
+    }, []);
+    const lineWidth = useMemo(() => {
+        return 8;
+    }, []);
     const renderLines = useMemo(() => {
         return [...Array.from({ length: quantityLines }, (_, index) => index)];
     }, []);
 
     return (
         <div className={`
-            w-screen h-[20vh]
+            w-screen h-[20vh] overflow-hidden
             bg-[#ded895] relative
         `} >
             <div className={`
-                w-full h-[24%] bg-[#9ce659] flex items-center justify-center  
+                w-full h-[20%] bg-[#9ce659] flex items-center
             `}>
                 {
-                    renderLines.map((el) => {
-                        return (
-                            <div
-                                key={el}
-                                style={{width: `${lineWidth}px`}}
-                                className={`
-                                    h-full bg-[#73bf2e]
-                                `}>
-
-                            </div>
-                        )
+                    renderLines.map((el, index) => {
+                        if(index === 0) {
+                            return <LineWrapper key={el} lineWidth={lineWidth} isFirst={true} screenWidth={screenWidth}></LineWrapper>
+                        }
+                        return <LineWrapper key={el} lineWidth={lineWidth} isFirst={false} screenWidth={screenWidth}></LineWrapper>
                     })
                 }
             </div>
         </div>
     )
-};
+});
 
 export default Ground;
