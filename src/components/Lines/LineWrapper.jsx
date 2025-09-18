@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import Line from './Line';
 
-const LineWrapper = React.memo(({ lineWidth, screenWidth, isFirst }) => {
+const LineWrapper = React.memo(({ lineWidth, screenWidth }) => {
 
     const currentRef = useRef(null);
     let animation;
@@ -22,7 +22,7 @@ const LineWrapper = React.memo(({ lineWidth, screenWidth, isFirst }) => {
             currentOffset.current = offset.current;
         }
         else {
-            if (positionRight.current <= 10) {
+            if (positionRight.current <= speed) {
                 positionRight.current -= positionRight.current;
                 currentOffset.current -= positionRight.current;
             }

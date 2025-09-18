@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import LineWrapper from "../Lines/LineWrapper";
 
 const Ground = React.memo(() => {
-    
+
     const screenWidth = useMemo(() => {
         return window.innerWidth;
     }, []);
@@ -25,11 +25,8 @@ const Ground = React.memo(() => {
                 w-full h-[20%] bg-[#9ce659] flex items-center
             `}>
                 {
-                    renderLines.map((el, index) => {
-                        if(index === 0) {
-                            return <LineWrapper key={el} lineWidth={lineWidth} isFirst={true} screenWidth={screenWidth}></LineWrapper>
-                        }
-                        return <LineWrapper key={el} lineWidth={lineWidth} isFirst={false} screenWidth={screenWidth}></LineWrapper>
+                    renderLines.map((el) => {
+                        return <LineWrapper key={el} lineWidth={lineWidth} screenWidth={screenWidth}></LineWrapper>
                     })
                 }
             </div>
