@@ -1,19 +1,16 @@
 import React, { useMemo } from "react";
 import LineWrapper from "../Lines/LineWrapper";
+import { useSelector } from "react-redux";
 
 const Ground = React.memo(() => {
 
-    const screenWidth = useMemo(() => {
-        return window.innerWidth;
-    }, []);
-    const quantityLines = useMemo(() => {
-        return 14;
-    }, []);
-    const lineWidth = useMemo(() => {
-        return 8;
-    }, []);
+    const screenWidth = useSelector((state) => state.game.screenWidth);
+
+    const QUANTITY_LINES = 14;
+    const LINE_WIDTH = 8;
+    
     const renderLines = useMemo(() => {
-        return [...Array.from({ length: quantityLines }, (_, index) => index)];
+        return [...Array.from({ length: QUANTITY_LINES }, (_, index) => index)];
     }, []);
 
     return (
@@ -26,7 +23,7 @@ const Ground = React.memo(() => {
             `}>
                 {
                     renderLines.map((el) => {
-                        return <LineWrapper key={el} lineWidth={lineWidth} screenWidth={screenWidth}></LineWrapper>
+                        return <LineWrapper key={el} lineWidth={LINE_WIDTH} screenWidth={screenWidth}></LineWrapper>
                     })
                 }
             </div>

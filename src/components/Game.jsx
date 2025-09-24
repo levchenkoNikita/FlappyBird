@@ -1,5 +1,5 @@
-import Sky from './components/Environment/Sky';
-import Ground from './components/Environment/Ground';
+import Sky from './Environment/Sky';
+import Ground from './Environment/Ground';
 
 const Game = () => {
     return (
