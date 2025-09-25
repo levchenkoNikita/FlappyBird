@@ -4,13 +4,15 @@ import PipeDown from "./PipeDown";
 import SpaceBetweenPipes from "./SpaceBetweenPipes";
 import { useSelector } from "react-redux";
 
-const PipesWrapper = React.memo(({ index }) => {
+const PipesWrapper = React.memo(({ index, pipeWidth, pipeQuantity }) => {
 
     let animation;
+    let heightPipeUp = Math.floor(Math.random() * (75 - 10 + 1)) + 10; // от 10 до 75
     const currentOffset = useRef();
     const rightCorner = useRef();
     const rightPosition = useRef();
     const elementRef = useRef();
+    const initialOffset = useRef();
     const offset = useRef();
     const speed = useSelector((state) => state.game.speed);
     const screenWidth = useSelector((state) => (state.game.screenWidth));
@@ -21,6 +23,7 @@ const PipesWrapper = React.memo(({ index }) => {
         if (rightPosition.current <= 0) {
             rightPosition.current = rightCorner.current + offset.current;
             currentOffset.current = offset.current;
+            heightPipeUp = Math.floor(Math.random() * (75 - 10 + 1)) + 10;
         }
         else {
 
@@ -40,19 +43,20 @@ const PipesWrapper = React.memo(({ index }) => {
 
     useEffect(() => {
         rightCorner.current = elementRef.current.getBoundingClientRect().right;
-        offset.current = screenWidth - rightCorner.current + elementRef.current.clientWidth + index * 400;
-        rightPosition.current = rightCorner.current + offset.current;
-        currentOffset.current = offset.current;
-
-        // animation = requestAnimationFrame(animate);
+        initialOffset.current = elementRef.current.clientWidth * 6;
+        offset.current = elementRef.current.clientWidth * (pipeQuantity - index - 1);
+        rightPosition.current = rightCorner.current + initialOffset.current;
+        currentOffset.current = initialOffset.current;
+        
+        animation = requestAnimationFrame(animate);
 
         return cancelAnimationFrame(animate);
     }, []);
 
     return (
-        <div ref={elementRef} className={`w-full h-full flex justify-center`}>
+        <div ref={elementRef} style={{minWidth: `${pipeWidth}%`}} className={`h-full flex justify-center`}>
             <div className="h-full w-[52px]">
-                <PipeUp />
+                <PipeUp height={heightPipeUp}/>
                 <SpaceBetweenPipes />
                 <PipeDown />
             </div>

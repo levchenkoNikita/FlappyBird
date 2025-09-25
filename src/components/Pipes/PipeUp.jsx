@@ -1,6 +1,7 @@
-const PipeUp = () => { // Менять только значение параметра height!
+const PipeUp = ({ height }) => { // Менять только значение параметра height!
+
     return (
-        <div className={`h-[40%]`}> 
+        <div style={{height: `${height}%`}}> 
             <img
                 src="/src/assets/PipesImg/PipeUp/PipeLong.png"
                 alt="pipe ground"
