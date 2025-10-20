@@ -39,7 +39,7 @@ const LineWrapper = React.memo(({ lineWidth, screenWidth }) => {
         positionRight.current = rightCorner.current;
         offset.current = screenWidth - rightCorner.current + elementRef.current.clientWidth * 1.5;
 
-        animation = requestAnimationFrame(animate);
+        animation = requestAnimationFrame(animate); //
 
         return () => {
             cancelAnimationFrame(animation);

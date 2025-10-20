@@ -48,9 +48,11 @@ const PipesWrapper = React.memo(({ index, pipeWidth, pipeQuantity }) => {
         rightPosition.current = rightCorner.current + initialOffset.current;
         currentOffset.current = initialOffset.current;
         
-        animation = requestAnimationFrame(animate);
+        animation = requestAnimationFrame(animate); //
 
-        return cancelAnimationFrame(animate);
+        return () => {
+            cancelAnimationFrame(animation);
+        };
     }, []);
 
     return (

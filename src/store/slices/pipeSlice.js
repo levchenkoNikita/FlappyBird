@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const pipeSlice = createSlice({
     name: 'pipe',
     initialState: {
-        pipeWidth: 20, // значение указано в %; на мобилке - 50%; на ноуте - 40%; на компе - 30%;
+        pipeWidth: 30, // значение указано в %; на мобилке - 50%; на ноуте - 40%; на компе - 30%;
         pipeQuantity: 10, // базовое значение -- 6
     },
     reducers: {

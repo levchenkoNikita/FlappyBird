@@ -4,7 +4,7 @@ const birdSlice = createSlice({
     name: 'bird',
     initialState: {
         width: 32,
-        height: 16,
+        height: 24,
         velosity: 4,
         collisionX: 34,
         collisionY: 18

@@ -13,7 +13,7 @@ const Pipes = () => {
     }, []);
 
     return (
-        <div className="w-full h-full flex items-center">
+        <div className="w-full h-full flex items-center select-none">
             {
                 renderPipes.map((element) => {
                     return <PipesWrapper key={element} index={element} pipeWidth={pipeWidth} pipeQuantity={pipeQuantity}/>
